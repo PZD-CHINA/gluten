@@ -35,7 +35,7 @@ on:
       - 'cpp/velox/**'
       - 'cpp/core/**'
       - 'dev/**'
-#      - 'substrait/substrait-spark/**'
+      - 'substrait/substrait-spark/**'
 
 env:
   HTTP_PROXY_HOST: 10.240.252.16
@@ -281,13 +281,13 @@ jobs:
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
           cd /opt/gluten/ep/build-velox/src && \
-          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF && \
-          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF'
+          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON && \
+          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON'
       - name: Build Gluten CPP library
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
           cd /opt/gluten/cpp && \
-          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF'
+          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON'
       - name: Build for Spark 3.3.1
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
@@ -332,13 +332,13 @@ jobs:
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
           cd /opt/gluten/ep/build-velox/src && \
-          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF && \
-          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF'
+          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON && \
+          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON'
       - name: Build Gluten CPP library
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
           cd /opt/gluten/cpp && \
-          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF'
+          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON'
       - name: Build for Spark 3.2.2
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
@@ -386,14 +386,14 @@ jobs:
           source /env.sh && \
           sudo yum -y install patch && \
           cd /opt/gluten/ep/build-velox/src && \
-          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF && \
-          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF'
+          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON && \
+          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON'
       - name: Build Gluten CPP library
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
           source /env.sh && \
           cd /opt/gluten/cpp && \
-          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF'
+          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON'
       - name: Build for Spark 3.2.2
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
@@ -440,14 +440,14 @@ jobs:
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
           yum -y install epel-release centos-release-scl patch sudo && \
           cd /opt/gluten/ep/build-velox/src && \
-          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF && \
-          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF --enable_hdfs=ON'
+          ./get_velox.sh --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON && \
+          ./build_velox.sh --velox_home=/opt/velox --enable_ep_cache=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON --enable_hdfs=ON'
       - name: Build Gluten CPP library
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
           cd /opt/gluten/cpp && \
           source /opt/rh/devtoolset-9/enable && \
-          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=OFF'
+          ./compile.sh --build_velox_backend=ON --velox_home=/opt/velox --enable_hdfs=ON --enable_s3=ON --enable_gcs=ON --enable_abfs=ON'
       - name: Build for Spark 3.2.2
         run: |
           $PATH_TO_GLUTEN_TE/$OS_IMAGE_NAME/gha/gha-checkout/exec.sh '
@@ -530,7 +530,7 @@ jobs:
           cd /opt/gluten && \
           sudo -E ./dev/vcpkg/setup-build-depends.sh && \
           source ./dev/vcpkg/env.sh && \
-          ./dev/builddeps-veloxbe.sh --enable_vcpkg=ON --build_tests=OFF  --build_benchmarks=OFF --enable_s3=ON --enable_gcs=ON --enable_hdfs=ON --enable_abfs=OFF'
+          ./dev/builddeps-veloxbe.sh --enable_vcpkg=ON --build_tests=OFF  --build_benchmarks=OFF --enable_s3=ON --enable_gcs=ON --enable_hdfs=ON --enable_abfs=ON'
       - name: Build for Spark 3.2.2
         run: |
           docker exec static-build-test-$GITHUB_RUN_ID bash -c '
